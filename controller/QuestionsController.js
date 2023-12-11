@@ -7,13 +7,10 @@ module.exports.create=async function(req,res){
     console.log(req.body);
     await Question.create(req.body,function(err,ques){
             if(err){console.log("error in creating the question schema",err);}
-    
 
         console.log(ques);
         res.send(ques);
 })
-
-
 }
 
 module.exports.showDetails=async function(req,res){
@@ -29,9 +26,6 @@ module.exports.showDetails=async function(req,res){
         else{
             res.send("id does not exits");
         }
-
-    
-
     // in this the details about the question is displayed
 }
 
@@ -44,7 +38,6 @@ module.exports.deleteQues=async function(req,res){
             // deleting all the option of that question
             await Option.deleteMany({question:req.params.id}).clone().catch(function(err){ console.log(err)})
                 res.send("ques deleted");
-    
         }
         //  if th at question of the given id does not exists then just sending a message
         else{
